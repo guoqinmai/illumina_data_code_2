@@ -1,0 +1,2 @@
+#!/bin/sh
+for i in `cat 16_ulumina.list.txt`; do /ifs1/User/maiguoqin/pathogen/国家病原库基因组/bacteria_virus_funge_para_arm/bowtie2/bowtie2-2.5.2-linux-x86_64/bowtie2 -x /ifs1/User/maiguoqin/pathogen/国家病原库基因组/bacteria_virus_funge_para_arm/bowtie2/GCF_000001405.39_GRCh38.p13_genomic.fna -1 /ifs1/User/maiguoqin/out_16_yanjiaomo/1_zhikong/$i.clean.lite.1_1.fastq -2 /ifs1/User/maiguoqin/out_16_yanjiaomo/1_zhikong/$i.clean.lite.1_2.fastq -S /ifs1/User/maiguoqin/out_16_yanjiaomo/1_bowtie2/$i.sam -p 10;done

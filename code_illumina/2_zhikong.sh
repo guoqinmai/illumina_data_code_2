@@ -1,0 +1,2 @@
+#!/bin/sh
+for i in `cat 16_ulumina.list.txt`; do fastp -i /ifs1/User/maiguoqin/out_16_yanjiaomo/$i.lite.1_1.fastq -I /ifs1/User/maiguoqin/out_16_yanjiaomo/$i.lite.1_2.fastq -o /ifs1/User/maiguoqin/out_16_yanjiaomo/1_zhikong/$i.clean.lite.1_1.fastq -O /ifs1/User/maiguoqin/out_16_yanjiaomo/1_zhikong/$i.clean.lite.1_2.fastq -z 4 -q 20 -u 30 -n 5 -f 10 -t 20 -F 10 -T 20 -h /ifs1/User/maiguoqin/out_16_yanjiaomo/1_zhikong/$i.html;done

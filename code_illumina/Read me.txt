@@ -1,0 +1,27 @@
+Step 1:converted from lite format to fastq format,code:1_lite_fastq
+
+Step 2:quality control, code:2_zhikong.sh
+
+Step 3:removal of host contamination,code:3_bowtie.sh
+
+Step 4:converted from bam format to fastq format,code:4_bam_fastq.sh
+
+Step 5:converted from FASTQ format to FASTA format,code:5_fastq_fasta_1.sh, 5_fastq_fasta_2.sh
+
+Step 6:Merge *.fasta_1 and *.fasta_2,code:6_cat.sh
+
+Step 7:aligned with the genome of pathogens using BLASTN software,code:6_blastn.sh
+
+Step 8: calculating the parameters of the BLASTN results.
+
+These parameters, including the number_of_matches, average, sum, reads_ratio, all_ratio, and product-value, are related to the possible pathogens. 
+Therefore, number_of_matches, average and 1/the length of one read, were multiplied to obtain the product-value, and the product-value of each microorganism was calculated.
+First, remove the results with average value less than (the length of one read /2)bp, and then arrange the remaining results in descending order by product-value. 
+The sample with the highest product-value was considered the suspected pathogen of the sample.code:8_bingyuanjun_tongji_illumina.ipynb
+
+######remove the results with average value less than (the length of one read /2)bp
+for i in `cat ulumina.list.txt`; do awk -F ',' '{if($3>38)print $0}' \
+ /ifs1/User/maiguoqin/pathogen/国家病原库基因组/bacteria_virus_funge_para_arm/ulumina_test/7_count/$i.csv>
+  /ifs1/User/maiguoqin/pathogen/国家病原库基因组/bacteria_virus_funge_para_arm/ulumina_test/8_count/$i.csv;done 
+
+datas file:\data
